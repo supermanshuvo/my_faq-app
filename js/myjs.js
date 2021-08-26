@@ -1,9 +1,11 @@
+"use strict";
 // De-clearing Variable
 let faq_input_data      = document.querySelector('#add_to_faq_list'),
     faq_list_item       = document.querySelector('#faq-list'),
     faq_list_question   = document.getElementById('question'),
     faq_list_answer     = document.getElementById('answer'),
-    faq_add_btn         = document.getElementById('create');
+    faq_add_btn         = document.getElementById('create'),
+    faq_success_sms     = document.getElementById('success_sms');
 const url = "https://jsonplaceholder.typicode.com/posts";
 
 // Add Data to server
@@ -13,7 +15,7 @@ faq_add_btn.addEventListener('click',(e)=>{
 });
 function add_faq(){
     fetch(url,{
-        method:'PATCH',
+        method:'POST',
         body: JSON.stringify({
             faqId : 1,
             question: faq_list_question.value,
@@ -22,5 +24,20 @@ function add_faq(){
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
         },
+    })
+    .then((response) => response.json())
+    .then((json) => {
+        let data = [];
+        data.push(json);
+        show_faq(data);
     });
+    faq_list_answer.value = '';
+    faq_list_question.value = '';
+}
+
+function show_faq(data){
+    faq_success_sms.innerHTML=`<div class="alert alert-success alert-dismissible fade show" role="alert">
+     successfully added!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>`;
 }
