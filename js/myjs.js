@@ -30,14 +30,15 @@ function add_faq(){
         let data = [];
         data.push(json);
         show_faq(data);
+        faq_success_sms.innerHTML=`<div class="alert alert-success alert-dismissible fade show" role="alert">
+     FAQ Successfully Added!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>`;
     });
     faq_list_answer.value = '';
     faq_list_question.value = '';
 }
 
 function show_faq(data){
-    faq_success_sms.innerHTML=`<div class="alert alert-success alert-dismissible fade show" role="alert">
-     successfully added!
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>`;
+    
 }
