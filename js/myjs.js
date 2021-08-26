@@ -42,3 +42,14 @@ function add_faq(){
 function show_faq(data){
     
 }
+document.addEventListener('DOMContentLoaded',()=>{
+    fetch(url)
+    .then((response)=>response.json())
+    .then((posts)=>show_faq(posts))
+    .catch((err)=>{
+        faq_success_sms.innerHTML=`<div class="alert alert-warning alert-dismissible fade show" role="alert">
+     FAQ found ${err}!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>`;
+    })
+});
