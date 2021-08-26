@@ -47,7 +47,7 @@ function show_faq(data){
                 <td>${data.id}</td>
                 <td>${data.title}</td>
                 <td>${data.body}</td>
-                <td><button class="btn btn-warning btn-sm" onclick="deleteFAQ(${data.id})">Delete</button></td>
+                <td><button class="btn btn-danger btn-sm" onclick="deleteFAQ(${data.id})">Delete</button></td>
             </tr>`;
     });
     faq_list_item.innerHTML=item;
