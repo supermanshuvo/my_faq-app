@@ -5,7 +5,9 @@ let faq_input_data      = document.querySelector('#add_to_faq_list'),
     faq_list_question   = document.getElementById('question'),
     faq_list_answer     = document.getElementById('answer'),
     faq_add_btn         = document.getElementById('create'),
-    faq_success_sms     = document.getElementById('success_sms');
+    faq_success_sms     = document.getElementById('success_sms'),
+    item = '',
+    faqCustomId =101;
 const url = "https://jsonplaceholder.typicode.com/posts";
 
 // Add Data to server
@@ -17,9 +19,9 @@ function add_faq(){
     fetch(url,{
         method:'POST',
         body: JSON.stringify({
-            faqId : 1,
-            question: faq_list_question.value,
-            answer: faq_list_answer.value,
+            id : faqCustomId,
+            title: faq_list_question.value,
+            body: faq_list_answer.value,
         }),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
@@ -37,10 +39,18 @@ function add_faq(){
     });
     faq_list_answer.value = '';
     faq_list_question.value = '';
+    faqCustomId++;
 }
 
 function show_faq(data){
-    
+    data.forEach(data => {
+        item+=`<tr>
+        <td>${data.id}</td>
+        <td>${data.title}</td>
+        <td>${data.body}</td>
+    </tr>`;
+    });
+    faq_list_item.innerHTML=item;
 }
 document.addEventListener('DOMContentLoaded',()=>{
     fetch(url)
