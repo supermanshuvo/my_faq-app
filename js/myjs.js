@@ -11,3 +11,16 @@ faq_add_btn.addEventListener('click',(e)=>{
     e.preventDefault();
     add_faq();
 });
+function add_faq(){
+    fetch(url,{
+        method:'PATCH',
+        body: JSON.stringify({
+            faqId : 1,
+            question: faq_list_question.value,
+            answer: faq_list_answer.value,
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    });
+}
