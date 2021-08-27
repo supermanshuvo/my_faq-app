@@ -5,6 +5,7 @@ let faq_input_data      = document.querySelector('#add_to_faq_list'),
     faq_list_question   = document.getElementById('question'),
     faq_list_answer     = document.getElementById('answer'),
     faq_add_btn         = document.getElementById('create'),
+    faq_update_btn      = document.getElementById('update'),
     faq_success_sms     = document.getElementById('success_sms'),
     item = '';
 const url = "https://jsonplaceholder.typicode.com/posts";
@@ -38,7 +39,6 @@ function add_faq(){
     });
     faq_list_answer.value = '';
     faq_list_question.value = '';
-    faqCustomId++;
 }
 
 function show_faq(data){
@@ -47,7 +47,7 @@ function show_faq(data){
                 <td>${data.id}</td>
                 <td>${data.title}</td>
                 <td>${data.body}</td>
-                <td><button class="btn btn-danger btn-sm" onclick="deleteFAQ(${data.id})">Delete</button></td>
+                <td><button class="btn btn-warning btn-sm m-2" onclick="editFAQ(${data.id})">Edit</button><button class="btn btn-danger btn-sm" onclick="deleteFAQ(${data.id})">Delete</button></td>
             </tr>`;
     });
     faq_list_item.innerHTML=item;
@@ -83,4 +83,20 @@ function deleteFAQ(dataId){
                                     </div>`;
         })
     }
-}
+};
+
+function editFAQ(id){
+    faq_add_btn.className = 'd-none';
+    faq_update_btn.className = 'btn btn-warning';
+    let passId = id;
+    fetch(url)
+    .then((response)=>response.json())
+    .then((items)=>{
+        items.map((item)=>{
+            if(passId === item.id){
+                faq_list_answer.value = item.title;
+                faq_list_question.value = item.body;
+            }
+        });
+    })
+};
