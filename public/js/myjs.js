@@ -47,7 +47,7 @@ function show_faq(data){
                 <td>${data.id}</td>
                 <td>${data.title}</td>
                 <td>${data.body}</td>
-                <td><button class="btn btn-danger btn-sm" onclick="deleteFAQ(${data.id})"><i class="fa fa-trash-o" style="font-size:16px"></i></button></td>
+                <td><button class="btn btn-danger btn-sm" onclick="actionFAQ(${data.id})"><i class="fa fa-trash-o" style="font-size:16px"></i></button></td>
             </tr>`;
     });
     faq_list_item.innerHTML=item;
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     })
 });
 
-function deleteFAQ(dataId){
+function actionFAQ(dataId){
     let deleteBtn = event.target;
     let item = deleteBtn.parentElement;
     let id = item.dataset.id;
