@@ -95,8 +95,8 @@ function editFAQ(id){
     .then((items)=>{
         items.map((item)=>{
             if(passId === item.id){
-                faq_list_answer.value = item.body;
                 faq_list_question.value = item.title;
+                faq_list_answer.value = item.body;
             }
         });
     })
@@ -106,32 +106,8 @@ function editFAQ(id){
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>`;
     })
-    
-
-    faq_update_btn.addEventListener('click',function(e){
-        e.preventDefault();
-        let new_faq_question = faq_list_question.value;
-        let new_faq_answer = faq_list_answer.value;
-        fetch(`${url}/${passId}`, {
-            method: 'PUT',
-            body: JSON.stringify({
-              id: passId,
-              title:  new_faq_question,
-              body:  new_faq_answer ,
-            }),
-            headers: {
-              'Content-type': 'application/json; charset=UTF-8',
-            },
-  
-          })
-  
-            .then((response) => response.json())
-            .then((post) => {
-              console.log('not working')
-          })
-
-          .catch((err)=>alert(`${err.name} occurs`)) ;
-          updatePostDiv.style.display = 'none'; 
-          
-        })
 };
+faq_update_btn.addEventListener('click',function(e){
+    e.preventDefault();
+    console.log('I love Rima')
+})
