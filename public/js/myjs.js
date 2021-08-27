@@ -15,7 +15,7 @@ faq_add_btn.addEventListener('click',(e)=>{
     e.preventDefault();
     add_faq();
 });
-// FAQ add function
+// FAQ Add function
 function add_faq(){
     fetch(url,{
         method:'POST',
@@ -48,7 +48,7 @@ function show_faq(data){
                 <td>${data.id}</td>
                 <td>${data.title}</td>
                 <td>${data.body}</td>
-                <td><!-- <button class="btn btn-warning btn-sm m-2" onclick="editFAQ(${data.id})">Edit</button> --><button class="btn btn-danger btn-sm" onclick="deleteFAQ(${data.id})">Delete</button></td>
+                <td><button class="btn btn-warning btn-sm m-2" onclick="editFAQ(${data.id})">Edit</button><button class="btn btn-danger btn-sm" onclick="deleteFAQ(${data.id})">Delete</button></td>
             </tr>`;
     });
     faq_list_item.innerHTML=item;
@@ -86,7 +86,7 @@ function deleteFAQ(dataId){
     }
 };
 
-/* function editFAQ(id){
+function editFAQ(id){
     faq_add_btn.className = 'd-none';
     faq_update_btn.className = 'btn btn-warning';
     let passId = id;
@@ -134,5 +134,4 @@ function deleteFAQ(dataId){
           updatePostDiv.style.display = 'none'; 
           
         })
-}; */
-
+};
