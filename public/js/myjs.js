@@ -15,6 +15,7 @@ faq_add_btn.addEventListener('click',(e)=>{
     e.preventDefault();
     add_faq();
 });
+// FAQ add function
 function add_faq(){
     fetch(url,{
         method:'POST',
@@ -40,14 +41,14 @@ function add_faq(){
     faq_list_answer.value = '';
     faq_list_question.value = '';
 }
-
+// Show faq Function
 function show_faq(data){
     data.forEach(data => {
         item+=`<tr>
                 <td>${data.id}</td>
                 <td>${data.title}</td>
                 <td>${data.body}</td>
-                <td><button class="btn btn-warning btn-sm m-2" onclick="editFAQ(${data.id})">Edit</button><button class="btn btn-danger btn-sm" onclick="deleteFAQ(${data.id})">Delete</button></td>
+                <td><!-- <button class="btn btn-warning btn-sm m-2" onclick="editFAQ(${data.id})">Edit</button> --><button class="btn btn-danger btn-sm" onclick="deleteFAQ(${data.id})">Delete</button></td>
             </tr>`;
     });
     faq_list_item.innerHTML=item;
@@ -63,7 +64,7 @@ document.addEventListener('DOMContentLoaded',()=>{
                                     </div>`;
     })
 });
-
+// Delete Function Work
 function deleteFAQ(dataId){
     let deleteBtn = event.target;
     let item = deleteBtn.parentElement;
@@ -85,7 +86,7 @@ function deleteFAQ(dataId){
     }
 };
 
-function editFAQ(id){
+/* function editFAQ(id){
     faq_add_btn.className = 'd-none';
     faq_update_btn.className = 'btn btn-warning';
     let passId = id;
@@ -133,4 +134,5 @@ function editFAQ(id){
           updatePostDiv.style.display = 'none'; 
           
         })
-};
+}; */
+
