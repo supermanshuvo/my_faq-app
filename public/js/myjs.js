@@ -46,8 +46,8 @@ function show_faq(data){
     data.forEach(data => {
         item+=`<tr>
                 <td>${data.id}</td>
-                <td>${data.title}</td>
-                <td>${data.body}</td>
+                <td id="questionTd">${data.title}</td>
+                <td id="answerTd">${data.body}</td>
                 <td><button class="btn btn-warning btn-sm m-2" onclick="editFAQ(${data.id})">Edit</button><button class="btn btn-danger btn-sm" onclick="deleteFAQ(${data.id})">Delete</button></td>
             </tr>`;
     });
@@ -85,11 +85,12 @@ function deleteFAQ(dataId){
         })
     }
 };
-
 function editFAQ(id){
     faq_add_btn.className = 'd-none';
     faq_update_btn.className = 'btn btn-warning';
     let passId = id;
+    let id_Store = document.getElementById('id_value');
+    id_Store.value = passId;
     fetch(url)
     .then((response)=>response.json())
     .then((items)=>{
@@ -107,7 +108,37 @@ function editFAQ(id){
                                     </div>`;
     })
 };
-faq_update_btn.addEventListener('click',function(e){
+
+faq_update_btn.addEventListener('click',function(e,data){
     e.preventDefault();
-    console.log('I love Rima')
+    let faq_update_question = faq_list_question.value;
+    let faq_update_answer = faq_list_answer.value;
+    let item_id = document.getElementById('id_value').value;
+    fetch(`${url}/${item_id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          title: faq_update_question,
+          body: faq_update_answer,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+        .then((response) => response.json())
+        .then((item) => {
+            if(parseInt(item_id) == item.id){
+                document.querySelector('#questionTd').innerHTML= item.title;
+                document.querySelector('#answerTd').innerHTML= item.body;
+            }
+        })
+        .catch((err)=>{
+            faq_success_sms.innerHTML=`<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                            FAQ found ${err}!
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>`;
+        })
+    faq_add_btn.className = 'btn btn-success';
+    faq_update_btn.className = 'd-none';
+    faq_list_answer.value = '';
+    faq_list_question.value = '';
 })
