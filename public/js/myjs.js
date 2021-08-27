@@ -126,9 +126,12 @@ faq_update_btn.addEventListener('click',function(e,data){
       })
         .then((response) => response.json())
         .then((item) => {
-            if(parseInt(item_id) == item.id){
+            /* if(parseInt(item_id) == item.id){
                 document.querySelector('#questionTd').innerHTML= item.title;
                 document.querySelector('#answerTd').innerHTML= item.body;
+            } */
+            for(let keys in item[item_id]){
+                console.log(keys);
             }
         })
         .catch((err)=>{
