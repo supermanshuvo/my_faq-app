@@ -24,14 +24,15 @@ function show_faq(data){
         <td>${data.id}</td>
         <td id="questionTd">${data.question}</td>
         <td id="answerTd">${data.answer}</td>
-        <td><button>Edit</button><button>Delete</button></td>
+        <td><button>Edit</button> <button onclick="deleteFAQ(${data.id})">Delete</button></td>
         </tr>`
     });
     faq_list_item.innerHTML = item;
 }
 
 // Add Faq in list
-save.addEventListener('click',function(){
+save.addEventListener('click',function(e){
+    e.preventDefault();
     fetch(url,{
         method:'POST',
         body:JSON.stringify({
@@ -47,6 +48,28 @@ save.addEventListener('click',function(){
         let data = [];
         data.push(json);
         show_faq(data);
-        console.log('Success');
+        console.log('Add Success');
     });
 })
+
+// Delete Faq Function 
+function deleteFAQ(datId){
+    let deleteBtn = event.target;
+    let item = deleteBtn.parentElement;
+    // let id = item.dataset.id;
+    // console.log(id)
+    let ask = confirm('Do you want to delete the Item');
+    if(ask){
+        let itemParent = item.parentElement;
+        let final_item = itemParent.parentElement;
+        fetch(`${url}/${datId}`,{
+            method:'DELETE',
+        })
+        .then(()=>{
+            final_item.removeChild(itemParent);
+            console.log('Delete success');
+        })
+    }
+};
+
+// Edit Faq function
