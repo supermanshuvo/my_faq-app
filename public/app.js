@@ -34,23 +34,27 @@ function show_faq(data){
 // Add Faq in list
 save.addEventListener('click',function(e){
     e.preventDefault();
-    fetch(url,{
-        method:'POST',
-        body:JSON.stringify({
-            question:question.value,
-            answer:answer.value
-        }),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
-    .then((response) => response.json())
-    .then((json) => {
-        let data = [];
-        data.push(json);
-        show_faq(data);
-        console.log('Add Success');
-    });
+    if(question.value.length==0 && answer.value.length==0){
+        alert('Kindly Enter Something');
+    }else{
+        fetch(url,{
+            method:'POST',
+            body:JSON.stringify({
+                question:question.value,
+                answer:answer.value
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+        .then((response) => response.json())
+        .then((json) => {
+            let data = [];
+            data.push(json);
+            show_faq(data);
+            console.log('Add Success');
+        });
+    }
 })
 
 // Delete Faq Function 
@@ -93,23 +97,25 @@ function editFAQ(dataId){
 // let update_btn = document.getElementById('update');
 update_btn.addEventListener('click',function(e){
     e.preventDefault();
-    // console.log(hiddenId.value);
-    fetch(`${url}/${hiddenId.value}`,{
-        method: 'PUT',
-        body:JSON.stringify({
-            question:question.value,
-            answer:answer.value
-        }),
-        headers:{
-            'Content-type':'application/json; charset=UTF-8',
-        },
-    })
-    .then((response)=>response.json())
-    .then((item)=>{
-        console.log(item[hiddenId.value]);
-    })
-    .catch((err)=>console.log(err))
-
+    if(question.value.length==0 && answer.value.length==0){
+        alert('Kindly Enter Something');
+    }else{
+        fetch(`${url}/${hiddenId.value}`,{
+            method: 'PUT',
+            body:JSON.stringify({
+                question:question.value,
+                answer:answer.value
+            }),
+            headers:{
+                'Content-type':'application/json; charset=UTF-8',
+            },
+        })
+        .then((response)=>response.json())
+        .then((item)=>{
+            console.log(item[hiddenId.value]);
+        })
+        .catch((err)=>console.log(err))
+    }
     update_btn.style.display="none";
     save.style.display = "block";
     question.value='';
