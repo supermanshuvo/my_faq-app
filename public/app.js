@@ -3,6 +3,7 @@ let question = document.querySelector('#question'),
     answer = document.querySelector('#answer'),
     save = document.querySelector('#save'),
     faq_list_item = document.querySelector('#faq-list'),
+    update_btn = document.getElementById('update'),
     item = '';
 
 const url = "http://localhost:3000/faqs";
@@ -24,7 +25,7 @@ function show_faq(data){
         <td>${data.id}</td>
         <td id="questionTd">${data.question}</td>
         <td id="answerTd">${data.answer}</td>
-        <td><button>Edit</button> <button onclick="deleteFAQ(${data.id})">Delete</button></td>
+        <td><button onclick="editFAQ(${data.id})">Edit</button> <button onclick="deleteFAQ(${data.id})">Delete</button></td>
         </tr>`
     });
     faq_list_item.innerHTML = item;
@@ -56,8 +57,6 @@ save.addEventListener('click',function(e){
 function deleteFAQ(datId){
     let deleteBtn = event.target;
     let item = deleteBtn.parentElement;
-    // let id = item.dataset.id;
-    // console.log(id)
     let ask = confirm('Do you want to delete the Item');
     if(ask){
         let itemParent = item.parentElement;
@@ -73,3 +72,46 @@ function deleteFAQ(datId){
 };
 
 // Edit Faq function
+function editFAQ(dataId){
+    save.style.display = "none";
+    update_btn.style.display = "block";
+    let hiddenId = document.getElementById('hiddenId');
+    hiddenId.value = dataId;
+    fetch(url)
+    .then((response)=>response.json())
+    .then((items)=>{
+        items.map((item)=>{
+            if(parseInt(hiddenId.value)===parseInt(item.id)){
+                question.value = item.question;
+                answer.value = item.answer;
+            }
+        });
+    })
+    .catch((err)=>console.log(err))
+};
+
+// let update_btn = document.getElementById('update');
+update_btn.addEventListener('click',function(e){
+    e.preventDefault();
+    // console.log(hiddenId.value);
+    fetch(`${url}/${hiddenId.value}`,{
+        method: 'PUT',
+        body:JSON.stringify({
+            question:question.value,
+            answer:answer.value
+        }),
+        headers:{
+            'Content-type':'application/json; charset=UTF-8',
+        },
+    })
+    .then((response)=>response.json())
+    .then((item)=>{
+        console.log(item[hiddenId.value]);
+    })
+    .catch((err)=>console.log(err))
+
+    update_btn.style.display="none";
+    save.style.display = "block";
+    question.value='';
+    answer.value = '';
+})
