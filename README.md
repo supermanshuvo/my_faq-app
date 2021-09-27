@@ -13,6 +13,7 @@ you need to run the fake api
 After all of this you need to run the `index.html` or open with live server
 
 I am using rest api for the project. I need to update the style.
+Learning just basic Tailwind CSS
 I have a problem with `e.preventDefault();`
 Need some suggestion about the project.
 Kindly `Help me!`.
