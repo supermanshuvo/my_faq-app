@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded',()=>{
 function show_faq(data){
     data.forEach(data=>{
         item+=`<tr>
-        <td>${data.id}</td>
-        <td id="questionTd">${data.question}</td>
-        <td id="answerTd">${data.answer}</td>
-        <td><button onclick="editFAQ(${data.id})">Edit</button> <button onclick="deleteFAQ(${data.id})">Delete</button></td>
+        <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">${data.id}</td>
+        <td id="questionTd" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">${data.question}</td>
+        <td id="answerTd" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">${data.answer}</td>
+        <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><button onclick="editFAQ(${data.id})">Edit</button> <button onclick="deleteFAQ(${data.id})">Delete</button></td>
         </tr>`
     });
     faq_list_item.innerHTML = item;
