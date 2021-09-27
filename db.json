@@ -1,14 +1,29 @@
 {
-    "faqs":[
-        {
-            "id":1,
-            "question": "how to become success?",
-            "answer" : "Working hard"
-        },
-        {
-            "id":2,
-            "question":"What is life?",
-            "answer":"Feel every moment and enjoy all the moment."
-        }
-    ]
+  "faqs": [
+    {
+      "id": 1,
+      "question": "how to become success?",
+      "answer": "Working hard"
+    },
+    {
+      "id": 2,
+      "question": "What is life?",
+      "answer": "Feel every moment and enjoy all the moment."
+    },
+    {
+      "id": 3,
+      "question": "What is my name?",
+      "answer": "The name is Superman Shuvo"
+    },
+    {
+      "question": "Test",
+      "answer": "testing id",
+      "id": 4
+    },
+    {
+      "question": "test ",
+      "answer": "test 3",
+      "id": 5
+    }
+  ]
 }

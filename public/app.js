@@ -6,6 +6,7 @@ let question = document.querySelector('#question'),
     item = '';
 
 const url = "http://localhost:3000/faqs";
+
 // Show Faq Function
 document.addEventListener('DOMContentLoaded',()=>{
     fetch(url)
@@ -28,3 +29,24 @@ function show_faq(data){
     });
     faq_list_item.innerHTML = item;
 }
+
+// Add Faq in list
+save.addEventListener('click',function(){
+    fetch(url,{
+        method:'POST',
+        body:JSON.stringify({
+            question:question.value,
+            answer:answer.value
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+    .then((response) => response.json())
+    .then((json) => {
+        let data = [];
+        data.push(json);
+        show_faq(data);
+        console.log('Success');
+    });
+})
