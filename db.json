@@ -21,13 +21,8 @@
       "id": 4
     },
     {
-      "question": "test",
-      "answer": "test 3",
-      "id": 5
-    },
-    {
-      "question": "dfs",
-      "answer": "sdfsdf",
+      "question": "Algorithm and Data",
+      "answer": "bfs and dfs",
       "id": 6
     }
   ]

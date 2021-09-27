@@ -77,8 +77,8 @@ function deleteFAQ(datId){
 
 // Edit Faq function
 function editFAQ(dataId){
-    save.style.display = "none";
-    update_btn.style.display = "block";
+    save.className = "hidden";
+    update_btn.className = "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500";
     let hiddenId = document.getElementById('hiddenId');
     hiddenId.value = dataId;
     fetch(url)
@@ -116,8 +116,8 @@ update_btn.addEventListener('click',function(e){
         })
         .catch((err)=>console.log(err))
     }
-    update_btn.style.display="none";
-    save.style.display = "block";
+    update_btn.className = "hidden";
+    save.className = "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500";
     question.value='';
     answer.value = '';
 })
