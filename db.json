@@ -1,0 +1,14 @@
+{
+    "faq":[
+        {
+            "id":1,
+            "question": "how to become success?",
+            "answer" : "Working hard"
+        },
+        {
+            "id":2,
+            "question":"What is life?",
+            "answer":"Feel every moment and enjoy all the moment."
+        }
+    ]
+}
