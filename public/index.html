@@ -4,67 +4,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My FAQ App</title>
-    <!-- Bootstrap CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-
+    <title>Faq App</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navbar Area Start -->
-    <nav class="navbar navbar-dark bg-primary">
-        <div class="container">
-        <a class="navbar-brand fw-bold">FAQ App</a>
-        </div>
-    </nav>
-    <!-- Navbar Area End -->
-    <!-- FAQ INPUT FORM  START -->
-    <div class="container mt-2 p-2">
-        <div class="row justify-content-evenly">
-            <div class="col-6">
-                <h5 class="fw-bold">FAQ of your work</h5>
-                <div id="success_sms"></div>
-                <form id="add_to_faq_list">
-                    <div class="form-group mb-2">
-                        <input type="text" class="form-control" name="question" id="question" placeholder="Enter your The Question?">
-                    </div>
-                    <div class="form-group mb-3 mt-3">
-                        <textarea name="answer" class="form-control" id="answer" cols="33" rows="5" placeholder="Enter your The Answer!"></textarea>
-                    </div>
-                    <input type="submit" value="Save" class="btn btn-success" id="create">
-                    <input type="button" value="Update" class="btn btn-warning d-none" id="update">
-                    <input type="button" value="" class="d-none" id="id_value">
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- FAQ INPUT FORM  END   -->
-    <!-- FAQ QUESTION AND ANSWER START -->
-    <div class="container mt-3">
-        <div class="row justify-content-evenly">
-            <h4 class="fw-bold">FAQ LIST</h4>
-            <table class="table table-striped table-hover text-cente">
-                <thead>
-                    <tr>
-                        <th class="col-1">SL No.</th>
-                        <th class="col-4">FAQ QUESTION</th>
-                        <th class="col-5">FAQ ANSWER</th>
-                        <th class="col-2">Action</th>
-                    </tr>
-                </thead>
-                <tbody  id="faq-list">
-                </tbody>
-            </table>
-        </div>
-        <div class="footer text-center">
-            <p>To-do List create by <a class="link-success text-decoration-none" href="https://www.facebook.com/supermanshuvo" target="_blank">Shuvo The
-                Superman</a> 2021</p>
+  <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <h1 class="mt-6 text-center text-3xl font-semibold text-gray-900">My Faq App</h1>
+      <div class="mt-8 space-y-6">
+        <input type="hidden" id="hiddenId">
+        <div class="rounded-md shadow-sm -space-y-px">
+          <div>
+            <input type="text" name="question" id="question" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Enter you question">
           </div>
+          <div>
+            <textarea name="answer" id="answer" cols="30" rows="3" placeholder="Enter the answer" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mb-2"></textarea>
+          </div>
+          <div class="mx-5 my-5">
+            <input type="button" value="Save Faq" id="save" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <input type="button" value="Update Faq" id="update" class="hidden">
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- FAQ QUESTION AND ANSWER END   -->
-    <!-- JS FILE -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/myjs.js"></script>
+  </div>
+  <div class="container mx-5 p-5">
+    <div class="flex flex-col">
+      <h1 class="mt-6 text-center text-3xl font-semibold text-gray-900 my-5">My Faq List</h1>
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50 text-center">
+                  <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">SL No.</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Question</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Answer</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="faq-list" class="bg-white divide-y divide-gray-200 text-center">
+                  <tr">
+                    <th scope="row" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">1</th>
+                    <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mark</td>
+                    <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Otto</td>
+                    <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">@mdo</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <script src="app.js"></script>
 </body>
 </html>

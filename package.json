@@ -1,0 +1,19 @@
+{
+  "name": "faq-app",
+  "version": "1.0.0",
+  "description": "faq app",
+  "main": "app.js",
+  "scripts": {
+    "json:server": "json-server --watch db.json",
+    "build-css" : "tailwindcss build src/styles.css -o public/styles.css"
+  },
+  "keywords": [
+    "faq"
+  ],
+  "author": "Superman <supermanshuvo@super.com>",
+  "license": "MIT",
+  "dependencies": {
+    "json-server": "^0.16.3",
+    "tailwindcss": "^2.2.16"
+  }
+}

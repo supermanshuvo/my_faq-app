@@ -1,0 +1,34 @@
+{
+  "faqs": [
+    {
+      "question": "how to become success?",
+      "answer": "Working hard",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "question": "What is life?",
+      "answer": "Feel every moment and enjoy all the moment."
+    },
+    {
+      "question": "What is my name?",
+      "answer": "The name is Superman Shuvo",
+      "id": 3
+    },
+    {
+      "question": "How I feel today?",
+      "answer": "I am feeling like I am the best in the world.",
+      "id": 4
+    },
+    {
+      "question": "test",
+      "answer": "test 3",
+      "id": 5
+    },
+    {
+      "question": "dfs",
+      "answer": "sdfsdf",
+      "id": 6
+    }
+  ]
+}
