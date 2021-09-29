@@ -55,6 +55,8 @@ save.addEventListener('click',function(e){
             console.log('Add Success');
         });
     }
+    question.value='';
+    answer.value = '';
 })
 
 // Delete Faq Function 
